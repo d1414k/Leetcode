@@ -1,0 +1,54 @@
+Leetcode 1477. Find Two Non-overlapping Sub-arrays Each With Target Sum
+https://leetcode.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/
+
+class Solution {
+    public int minSumOfLengths(int[] a, int target) {
+        int n =  a.length;
+        if(n < 2)
+            return -1;
+        int []len = new int[n]; //len[i] = min size subarray with target sum starting with a[i]
+        int []min = new int[n]; //min[i] = min size subarray with target sum in a[i] to a[n-1]
+        Arrays.fill(len,Integer.MAX_VALUE);
+        int i = 0, j = 0,sum = 0;
+        while(i < n){
+            if(j == n && sum < target)
+                break;
+            if(j < n && sum < target){
+               sum += a[j++]; 
+            }
+            if(sum >= target){
+                if(sum == target)
+                    len[i] = j - i;
+                sum -= a[i++];
+                j = Math.max(j,i);
+            }
+        }//p(""+Arrays.toString(len));
+        int m = min[n-1] = len[n-1];
+        for(int k = n - 2 ; k >= 0 ; k--){
+            min[k] = m = Math.min(len[k],m);
+        }//p(""+Arrays.toString(min));
+        int res = Integer.MAX_VALUE;
+        for(int k = 0 ; k < n - 1 ; k++){
+            if(len[k] != Integer.MAX_VALUE && k + len[k] < n && min[k + len[k]] != Integer.MAX_VALUE){
+                if(res > len[k] + min[k + len[k]])
+                    res = len[k] + min[k + len[k]];
+            }
+        }
+    return res == Integer.MAX_VALUE ? -1 : res;
+    }
+    void p(String s){
+        System.out.println(s);
+    }
+}
+/*
+[3,2,2,4,3]
+3
+[7,3,4,7]
+7
+[4,3,2,6,2,3,4]
+6
+[5,5,4,4,5]
+3
+[3,1,1,1,5,1,2,1]
+3
+*/
