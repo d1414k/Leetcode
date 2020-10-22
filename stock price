@@ -1,7 +1,8 @@
 1. Max no of transection is k 
     Approach1 
     using dp
-    Approach using greedy
+    Approach2
+    Using greedy
         try to find all possible transection and keep on adding them in list.
         try to merge this list
         
