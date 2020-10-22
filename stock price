@@ -3,7 +3,7 @@ Max no of transection is k
     Approach1 
     using dp
     Approach2
-    Using greedy
+    Using greedy : 
         try to find all possible transection and keep on adding them in list.
         try to merge this list
         
@@ -12,3 +12,11 @@ Max no of transection is k
         
         then add these transections in max heap
         and remove top k transections
+        
+------------------------------------
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solution/
+=>Algorithm
+
+The general idea is to store all consecutively increasing subsequence as the initial solution. 
+Then delete or merge transactions until the number of transactions less than or equal to k.
+-----------------------------
