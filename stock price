@@ -1,0 +1,12 @@
+1. Max no of transection is k 
+    Approach1 
+    using dp
+    Approach using greedy
+        try to find all possible transection and keep on adding them in list.
+        try to merge this list
+        
+            /   =>    /     
+        /            /  
+        
+        then add these them in max heap
+        and remove top k transections
