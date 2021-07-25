@@ -6,7 +6,6 @@ class Solution {
             return new String[0];
         int n = queries.length;
         String res[] = new String[n];
-        Arrays.fill(res,"");
         HashMap<String, Integer> mapExactMatch = new HashMap();
         HashMap<String, Integer> mapIgnoreCase = new HashMap();
         HashMap<String, Integer> mapIgnoreVowelAndCase = new HashMap();
@@ -31,6 +30,8 @@ class Solution {
                 res[i] = wordlist[index];
             else if((index = mapIgnoreVowelAndCase.get(generateKeyIngnoreVowelAndCase(queries[i]))) != null)
                 res[i] = wordlist[index];
+            else 
+                res[i] = "";
         }
         return res;
     }
@@ -52,7 +53,7 @@ class Solution {
     }
     static boolean []vowel = new boolean[128];
     static{
-        vowel['a'] = vowel['e'] = vowel['i'] = vowel['o']= vowel['u']= vowel['A']= vowel['E']= vowel['I']= vowel['O']= vowel['U'] = true;
+        vowel['a'] = vowel['e'] = vowel['i'] = vowel['o'] = vowel['u'] = true;
     }
 }
 /*
