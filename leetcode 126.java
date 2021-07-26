@@ -4,8 +4,7 @@ class Solution {
         // use bfs to explore shortest path
         // as we do not need to generate any path larger than this shortest path
         // we can save graph generated so for and then use backtracking to generate all paths
-        HashSet<String> words = new HashSet();
-        words.addAll(wordList);
+        Set<String> words = new HashSet(wordList);
         if(!words.contains(endWord)) return new ArrayList();
         // apply bfs and create graph
         // we will mark visited once will remove from queue
@@ -17,9 +16,7 @@ class Solution {
         visited.add(beginWord); 
         while(!queue.isEmpty()){
              // Now remove all elements at last level from wordlist so that we do not have any edge from backward
-            for(String temp : queue){
-                words.remove(temp);
-            }
+            words.removeAll(queue);
             int size = queue.size();
             boolean isFound = false;
             while(size-- > 0){
@@ -56,10 +53,10 @@ class Solution {
         } //System.out.println(level+" "+graph);
         // Now apply backtracking to generate all 'level' length path
         List<List<String>> res = new ArrayList();
-       // visited.clear();
         generateAllPath(res,new String[level],graph,beginWord,endWord,0,level);
         return res;
     }
+    // applying backtracking in DAG
     void generateAllPath(List<List<String>> res,String []path, HashMap<String,Set<String>> graph,  String root, String endWord, int curLevel,int maxLevel){ 
         if(curLevel >= maxLevel) return;
         path[curLevel] = root;
@@ -69,11 +66,9 @@ class Solution {
         }
         if(graph.get(root) == null)  
             return;
-        //visited.add(root);
         for(String adj : graph.get(root)){
             generateAllPath(res,path,graph,adj,endWord,curLevel+1,maxLevel);
         }
-        //visited.remove(root);
     }
 }
 
