@@ -16,6 +16,10 @@ class Solution {
         queue.add(beginWord);
         visited.add(beginWord); 
         while(!queue.isEmpty()){
+             // Now remove all elements at last level from wordlist so that we do not have any edge from backward
+            for(String temp : queue){
+                words.remove(temp);
+            }
             int size = queue.size();
             boolean isFound = false;
             while(size-- > 0){
@@ -35,7 +39,7 @@ class Solution {
                             .append(root.substring(i+1))
                             .toString();
                         //String adj = root.substring(0,i) + j + root.substring(i+1);
-                        if(words.contains(adj) /*&& !visited.contains(newWord)*/){
+                        if(words.contains(adj)){
                             if(graph.get(root) == null)
                                 graph.put(root, new HashSet());
                             graph.get(root).add(adj);
@@ -49,18 +53,14 @@ class Solution {
             }
             level++;//System.out.println(level+": ");
             if(isFound) break;
-            // Now remove all elements at this level from wordlist so that we do not have any edge from backward
-            for(String temp : queue){
-                words.remove(temp);
-            }
         } //System.out.println(level+" "+graph);
         // Now apply backtracking to generate all 'level' length path
         List<List<String>> res = new ArrayList();
-        visited.clear();
-        generateAllPath(res,new String[level],graph,visited,beginWord,endWord,0, level);
+       // visited.clear();
+        generateAllPath(res,new String[level],graph,beginWord,endWord,0,level);
         return res;
     }
-    void generateAllPath(List<List<String>> res,String []path, HashMap<String,Set<String>> graph, HashSet<String> visited, String root, String endWord, int curLevel, int maxLevel){ 
+    void generateAllPath(List<List<String>> res,String []path, HashMap<String,Set<String>> graph,  String root, String endWord, int curLevel,int maxLevel){ 
         if(curLevel >= maxLevel) return;
         path[curLevel] = root;
         if(root.equals(endWord)){//System.out.println(curLevel+" "+root+" "+endWord);
@@ -71,17 +71,16 @@ class Solution {
             return;
         //visited.add(root);
         for(String adj : graph.get(root)){
-            if(!visited.contains(adj)){
-                visited.add(adj);
-                generateAllPath(res,path,graph,visited,adj,endWord,curLevel+1,maxLevel);
-                visited.remove(adj);
-            }
+            generateAllPath(res,path,graph,adj,endWord,curLevel+1,maxLevel);
         }
         //visited.remove(root);
     }
 }
 
 /*
+"a"
+"c"
+["a","b","c"]
 "hot"
 "dog"
 ["hot","cog","dog","tot","hog","hop","pot","dot"]
@@ -91,5 +90,8 @@ class Solution {
 "hit"
 "cog"
 ["hot","dot","dog","lot","log"]
+"lost"
+"miss"
+["most","mist","miss","lost","fist","fish"]
 
 */
