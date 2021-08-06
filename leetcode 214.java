@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/shortest-palindrome/
+// https://www.youtube.com/watch?v=c4akpqTwE5g
 class Solution {
     public String shortestPalindrome(String s) {
         StringBuilder p = new StringBuilder(s); //pp(p.toString());
