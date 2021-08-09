@@ -85,7 +85,7 @@ class DisjointSet{
         return count;
     }
 }
-// class Solution {
+// class Solution {// wrong
 //     public int regionsBySlashes(String[] grid) {
 //         int n = grid.length;
 //         int m = grid[0].length();
