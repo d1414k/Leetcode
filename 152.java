@@ -88,10 +88,10 @@ ans Max(0,[1 - 2 3], [4 5])
 
 // from submissions
 // first go from left to right then right to left and calculate maximum product
-class Solution {// fails for input [-2]
+class Solution {
     public int maxProduct(int[] nums) {
         //containing at least one number : no need of base case
-        int res = Integer.MIN_VALUE;
+        int res = nums[0];
         int cur = 1;
         // left to right
         for(int i = 0 ; i < nums.length ; i++){
