@@ -61,7 +61,7 @@ class Solution {
         }//System.out.println(""+Arrays.toString(left));
         // Now calculate res
         for(int i = 0 ; i < n ; i++){
-            res =  (res + (a[i]*((i - left[i]) * (right[i] - i)))%mod)%mod;
+            res =  (res + ((long)a[i]*((i - left[i]) * (right[i] - i)))%mod)%mod;
         }
         return (int)res;
     }
