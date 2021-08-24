@@ -45,7 +45,7 @@ class Solution {
     // Approach 2
     public int sumSubarrayMins(int[] a) {
         int n = a.length;
-        Stack<Integer> stack = new Stack<Integer>();// it holds index
+        Deque<Integer> stack = new ArrayDeque();// it holds index
         int []left = new int[n];
         int []right = new int[n];
         Arrays.fill(left,-1);
@@ -58,7 +58,7 @@ class Solution {
                 left[i] = stack.peek();
             stack.push(i);
             
-        }//System.out.println(""+Arrays.toString(left));
+        }
         // Now calculate res
         for(int i = 0 ; i < n ; i++){
             res =  (res + ((long)a[i]*((i - left[i]) * (right[i] - i)))%mod)%mod;
