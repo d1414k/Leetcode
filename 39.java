@@ -7,12 +7,15 @@ class Solution {
     we will get unique combinations
     
     Lets we have n candidates and k is target
-    T(n) = n { T(n,k-1) + T(n-1,k)}
+
+    T(n,k) = n { T(n,k-1) + T(n-1,k)}
     
-    Intitutively as we know that in any combination a number can be present between [0.n] times
-    so for all nos n*n*n*n.... n times
-    TC : O(n^n)
-    SC : O(k) : depth of recursion stack
+    Intitutively as we know that in any combination a number can be present between [0,k] times
+    so for all nos k*k*k*k.... n times
+    TC : O(K^n)
+    SC : O(max(k,n)) : depth of recursion stack
+
+    
     */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList();
