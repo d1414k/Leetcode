@@ -42,7 +42,7 @@ class Solution {
     }
 }
 
-// class Solution { // wrong ans for some solution
+// class Solution { // wrong ans
 //     public int minFlips(String s) {
 //         int n = s.length();
 //         if(n < 2) return n;
