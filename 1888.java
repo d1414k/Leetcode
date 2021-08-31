@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/
+// https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/discuss/1257289/simulation-%2B-presum-O(n)-time-and-O(n)-space
 
 //https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/discuss/1253874/C%2B%2B-Solution-sliding-window.-O(N)-Time-O(1)-Space
 class Solution {
