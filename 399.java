@@ -4,6 +4,7 @@ class Solution {
     /*
     Create a directed grah with given pairs
     backtrack graph for each query
+    TC : m*(2*n +2*n) + n => O(m*n)
     */
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         Map<String,List<Node>> graph = new HashMap();
@@ -25,11 +26,11 @@ class Solution {
             List<String> pair = queries.get(i);
             String src = pair.get(0);
             String des = pair.get(1);
-            res[i] = backtrack(graph,src,des,new HashSet(),1);
+            res[i] = bfs(graph,src,des,new HashSet(),1);
         }
         return res;
     }
-    double backtrack(Map<String,List<Node>> graph,String src, String des,HashSet<String> visited, double cur){
+    double bfs(Map<String,List<Node>> graph,String src, String des,HashSet<String> visited, double cur){
         double ans = -1.0;
         if(graph.get(src) == null) return ans;
         if(src.equals(des))
@@ -37,12 +38,12 @@ class Solution {
         visited.add(src);
         for(Node adj : graph.get(src)){
             if(!visited.contains(adj.name)){
-                ans = backtrack(graph, adj.name, des, visited,cur*(adj.val));
+                ans = bfs(graph, adj.name, des, visited,cur*(adj.val));
                 if(ans != -1.0)
                     return ans;
             }
         }
-        visited.remove(src);
+        //visited.remove(src);
         return ans;
     }
     // void p(String s){
