@@ -5,6 +5,7 @@ class Solution {
     Create a directed grah with given pairs
     backtrack graph for each query
     TC : m*(2*n +2*n) + n => O(m*n)
+    SC : O(n)
     */
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         Map<String,List<Node>> graph = new HashMap();
