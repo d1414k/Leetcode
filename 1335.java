@@ -3,18 +3,15 @@ class Solution {
     public static final int MAX = 10001;
     public int minDifficulty(int[] jobDifficulty, int d) {
         int n = jobDifficulty.length;
+        if(d > n) return -1;
+        
         int [][]dp = new int[n+1][d+1];
         //init
-        for(int i = 0 ; i <= n ; i++) {
-            for(int j = 0 ; j <= d ; j++){
-                dp[i][j] = MAX;        
-            }
-        }
-        // base case
-        dp[0][0] = 0;
-        
         for(int i = 1 ; i <= n ; i++) {
-            for(int j = 1 ; j <= d ; j++){
+            dp[i][0] = MAX;
+        }
+        for(int i = 1 ; i <= n ; i++) {
+            for(int j = 1 ; j <= d && j <= i ; j++){
                 int res = MAX;
                 for(int windowSize = 1, max = 0 ; windowSize <= i - j + 1 ; windowSize++) {
                     max = Math.max(max, jobDifficulty[i - windowSize]);
