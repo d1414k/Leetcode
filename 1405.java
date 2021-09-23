@@ -1,5 +1,20 @@
 // https://leetcode.com/problems/longest-happy-string/
 class Solution {
+    /*
+    We know that we can add double char for max letter count.
+    but after this either we can use double char or single char
+    Ex: 
+    Case 1 : 
+        a = 5, b = 2,c = 0 => aabaabaa  : after first double char we need to use single char
+    Case 2 :
+        a = 2, b = 2 , c = 2 => aabbcc : after first double char we can use double char
+    
+    if(count of current max > remaining elements count)
+        we have to use single char
+    else
+        we can use double char
+        
+    */
     public static String [][]dp = {{"a","aa"},{"b","bb"},{"c","cc"}};
     public String longestDiverseString(int a, int b, int c) {
         // int[] : <count,char> : char => 0 1 2 
