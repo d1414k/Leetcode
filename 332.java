@@ -1,5 +1,13 @@
 // https://leetcode.com/problems/reconstruct-itinerary/
 class Solution {
+    /*
+    The input graph is NOT what we call a DAG (Directed Acyclic Graph), since we could find at least a cycle in the graph.
+    In addition, the graph could even have some duplicate edges (i.e. we might have multiple flights 
+    with the same origin and destination)
+    
+    We need to find eludian path : visit each edge exactly once
+    
+    */
     public List<String> findItinerary(List<List<String>> tickets) {
         Map<String, PriorityQueue<String>> graph = new HashMap();
         for(List<String> ticket : tickets) {
