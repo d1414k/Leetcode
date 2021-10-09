@@ -7,6 +7,8 @@ class Solution {
     
     We need to find eludian path : visit each edge exactly once
     
+    TC:  E*log(E) 
+    
     */
     public List<String> findItinerary(List<List<String>> tickets) {
         Map<String, PriorityQueue<String>> graph = new HashMap();
