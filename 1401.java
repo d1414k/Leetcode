@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/circle-and-rectangle-overlapping/
 // https://leetcode.com/problems/circle-and-rectangle-overlapping/discuss/563463/C%2B%2B-with-simple-explanation
 
-class Solution {// not working for some test case with radious 1203
+class Solution {
     public boolean checkOverlap(int r, int x, int y, int minX, int minY, int maxX, int maxY) {
         // move circle to origin and change rectangle cordinatae
         minX -= x; maxX -= x;
