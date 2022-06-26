@@ -2,7 +2,7 @@
 class Solution {
     public int maxScore(int[] cardPoints, int k) {
         int n = cardPoints.length, sum = 0, maxSum = 0;
-        // Need find subarray of length "raminaing" with min sum
+        // first window
         for(int i = 0 ; i < k ; i++){
             sum += cardPoints[i];
         }
